@@ -19,7 +19,7 @@ services:
     container_name: db
     restart: always
     env_file:
-      - .env
+      - .env.db
     volumes:
       - dbdata:/var/lib/mysql
     networks:
