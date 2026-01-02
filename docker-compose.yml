@@ -6,7 +6,6 @@ services:
     container_name: hospital_app
     restart: always
     ports:
-      # FIX: Changed from "80:80" to "8080:80" because of rootless Podman
       - "8080:80"
     environment:
       APP_ENV: local
