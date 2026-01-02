@@ -15,7 +15,12 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 3. Install PHP extensions required by Laravel
-RUN apt install docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip -y
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+
+# 4. Install Extensions in batches to prevent Out-Of-Memory errors
+RUN docker-php-ext-install -j\$(nproc) pdo_mysql mbstring exif pcntl bcmath
+RUN docker-php-ext-install -j\$(nproc) gd
+RUN docker-php-ext-install -j\$(nproc) zip
 
 # 4. Enable Apache Rewrite Module (for Laravel routes)
 RUN a2enmod rewrite
