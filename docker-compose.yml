@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     build: .
-    container_name: hospital_app
+    container_name: app
     restart: always
     ports:
       - "80:80"
@@ -16,7 +16,7 @@ services:
 
   db:
     image: mysql:8.0.44-debian
-    container_name: hospital_db
+    container_name: db
     restart: always
     env_file:
       - .env
