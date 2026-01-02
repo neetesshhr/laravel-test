@@ -35,7 +35,7 @@ RUN apt-get install -y \
 RUN a2enmod rewrite
 
 # 6. Install Node.js 18.x (Updated from 16)
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
     && apt-get install -y nodejs
 
 # 7. Install Composer

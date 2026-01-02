@@ -21,7 +21,7 @@ services:
       - laravel-network
 
   db:
-    image: mysql:5.7
+    image: mysql:8.0.44-debian
     container_name: hospital_db
     restart: always
     environment:
