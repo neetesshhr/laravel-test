@@ -1,16 +1,13 @@
 version: '3.8'
 
 services:
-  # The Laravel Application
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: hospital-ms-app
+    build: .
     container_name: hospital_app
     restart: always
     ports:
-      - "80:80"  # Maps Host Port 80 -> Container Port 80
+      # FIX: Changed from "80:80" to "8080:80" because of rootless Podman
+      - "8080:80"
     environment:
       APP_ENV: local
       APP_DEBUG: "true"
@@ -24,7 +21,6 @@ services:
     networks:
       - laravel-network
 
-  # The Database
   db:
     image: mysql:5.7
     container_name: hospital_db
