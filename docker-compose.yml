@@ -7,14 +7,8 @@ services:
     restart: always
     ports:
       - "80:80"
-    environment:
-      APP_ENV: local
-      APP_DEBUG: "true"
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_DATABASE: hms_db
-      DB_USERNAME: hms_user
-      DB_PASSWORD: hms_password
+    env_file:
+      - .env
     depends_on:
       - db
     networks:
@@ -24,11 +18,8 @@ services:
     image: mysql:8.0.44-debian
     container_name: hospital_db
     restart: always
-    environment:
-      MYSQL_DATABASE: hms_db
-      MYSQL_USER: hms_user
-      MYSQL_PASSWORD: hms_password
-      MYSQL_ROOT_PASSWORD: rootpassword
+    env_file:
+      - .env
     volumes:
       - dbdata:/var/lib/mysql
     networks:
