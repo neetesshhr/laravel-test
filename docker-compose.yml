@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     build: .
-    container_name: hospital_app
+    container_name: app
     restart: always
     ports:
       - "80:80"
@@ -16,13 +16,10 @@ services:
 
   db:
     image: mysql:8.0.44-debian
-    container_name: hospital_db
+    container_name: db
     restart: always
-    environment:
-      MYSQL_DATABASE: hms_db
-      MYSQL_USER: hms_user
-      MYSQL_PASSWORD: hms_password
-      MYSQL_ROOT_PASSWORD: rootpassword
+    env_file:
+      - .env
     volumes:
       - dbdata:/var/lib/mysql
     networks:
