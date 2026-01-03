@@ -8,7 +8,8 @@ ARG GID=1000
 ARG NODE_VERSION=22.0.0
 
 # Install system dependencies and build libraries
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update  
+RUN apt-get install -y --no-install-recommends \
     curl \
     unzip \
     libpq-dev \
