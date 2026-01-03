@@ -168,7 +168,6 @@ WORKDIR /var/www
 # Copy the entrypoint script
 COPY ./docker/development/php-fpm/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
-RUN rm -rf .git
 # Switch back to the non-privileged user to run the application
 USER www-data
 
